@@ -53,16 +53,6 @@ $routes->add('/station-add', 'Admin\UserStation::add');
 $routes->get('/station-list/(:any)', 'Admin\UserStation::list/$1');
 $routes->post('/station-remove', 'Admin\UserStation::remove');
 
-// aqm param
-$routes->get('/aqm-param', 'Admin\AqmParam::index');
-$routes->get('/aqm-param/create', 'Admin\AqmParam::create');
-$routes->post('/aqm-param-save', 'Admin\AqmParam::save');
-$routes->get('/aqm-param/edit/(:any)', 'Admin\AqmParam::edit/$1');
-$routes->get('/param-list', 'Admin\AqmParam::list');
-$routes->post('/param-add', 'Admin\AqmParam::add');
-$routes->post('/param-remove', 'Admin\AqmParam::remove');
-$routes->post('/aqm-param-delete', 'Admin\AqmParam::delete');
-
 // aqm station
 $routes->get('/aqm-station', 'Admin\AqmStation::index');
 $routes->get('/aqm-station/create', 'Admin\AqmStation::create');
@@ -70,6 +60,12 @@ $routes->post('/aqm-station-save', 'Admin\AqmStation::save');
 $routes->get('/aqm-station/edit/(:any)', 'Admin\AqmStation::edit/$1');
 $routes->post('/aqm-station-update', 'Admin\AqmStation::update');
 $routes->post('/aqm-station-delete', 'Admin\AqmStation::delete');
+
+// aqm param
+$routes->get('aqm-station/aqm-param/edit/(:any)', 'Admin\AqmParam::edit/$1');
+$routes->post('/param-add', 'Admin\AqmParam::add');
+$routes->get('/param-list/(:any)', 'Admin\AqmParam::list/$1');
+$routes->post('/param-remove', 'Admin\AqmParam::remove');
 
 // company profile
 $routes->get('/company-profile', 'CompanyProfile::index');

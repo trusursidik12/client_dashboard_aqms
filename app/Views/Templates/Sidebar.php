@@ -57,14 +57,6 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="<?= base_url('aqm-param') ?>" class="nav-link <?= uri_string() == 'aqm-param' || uri_string() == 'aqm-param/create' ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-indent"></i>
-        <p>
-            Aqm Parameter
-        </p>
-    </a>
-</li>
-<li class="nav-item">
     <a href="<?= base_url('change-password') ?>" class="nav-link <?= uri_string() == 'change-password' ? 'active' : '' ?>">
         <i class="nav-icon fas fa-user-cog"></i>
         <p>

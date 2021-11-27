@@ -9,21 +9,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
-                <input type="hidden" id="user_id" value="<?= $user->id ?>">
-                <label class="form-label">Stasiun *</label>
-                <select id="station_id" class="form-control <?= $validation->hasError('station_id') ? 'is-invalid' : '' ?>">
-                    <option value="">-- Pilih Stasiun -- *</option>
-                    <?php foreach ($stations as $station) : ?>
-                        <option value="<?= $station->station_id ?>"><?= $station->station_id ?></option>
+            <div class="col-md-4">
+                <label class="form-label">ID Stasiun *</label>
+                <input type="text" id="station_id" class="form-control" value="<?= $station->station_id ?>" readonly>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Parameter *</label>
+                <select id="list_param_id" class="form-control <?= $validation->hasError('list_param_id') ? 'is-invalid' : '' ?>">
+                    <option value="">-- Pilih Parameter -- *</option>
+                    <?php foreach ($paramlists as $pList) : ?>
+                        <option value="<?= $pList->id ?>"><?= $pList->name ?></option>
                     <?php endforeach ?>
                 </select>
                 <div class="invalid-feedback">
-                    <?= $validation->getError('station_id') ?>
+                    <?= $validation->getError('list_param_id') ?>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Satuan *</label>
+                <select id="list_param_id" class="form-control <?= $validation->hasError('list_param_id') ? 'is-invalid' : '' ?>">
+                    <option value="">-- Pilih Satuan -- *</option>
+                    <?php foreach ($units as $unit) : ?>
+                        <option value="<?= $unit->id ?>"><?= $unit->name ?></option>
+                    <?php endforeach ?>
+                </select>
+                <div class="invalid-feedback">
+                    <?= $validation->getError('list_param_id') ?>
                 </div>
             </div>
             <div class="col-md-2 mt-3">
-                <button type="button" id="add_station" class="btn btn-primary mt-3"><i class="fas fa-plus mr-2"></i> Tambah</button>
+                <button type="button" id="add_param" class="btn btn-primary mt-3"><i class="fas fa-plus mr-2"></i> Tambah</button>
             </div>
         </div>
         <div class="row my-2">
@@ -32,13 +47,14 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>User</td>
                             <td>ID Stasiun</td>
+                            <td>Parameter</td>
+                            <td>Satuan</td>
                             <td>Hapus</td>
                         </tr>
                     </thead>
-                    <tbody id="list-station">
-                        <?= view('Admin/UserStation/List') ?>
+                    <tbody id="list-aqm-param">
+                        <?= view('Admin/AqmParam/List') ?>
                     </tbody>
                 </table>
             </div>
@@ -63,7 +79,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-light" data-dismiss="modal">Tutup</button>
-                <button type="button" id="remove_station" class="btn btn-outline-light" data-dismiss="modal">Hapus</button>
+                <button type="button" id="remove_param" class="btn btn-outline-light" data-dismiss="modal">Hapus</button>
             </div>
         </div>
     </div>
@@ -73,24 +89,28 @@
 <?= $this->section('sectionjs') ?>
 <script>
     $(document).ready(function() {
-        $("#add_station").click(function() {
-            var user_id = $('#user_id').val()
+        $("#add_param").click(function() {
             var station_id = $('#station_id').val()
-            if (station_id == '') {
-                alert('ID Stasiun kosong ..')
+            var list_param_id = $('#list_param_id').val()
+            var unit_id = $('#unit_id').val()
+            if (list_param_id == '') {
+                alert('Parameter kosong ..')
+            } else if (unit_id) {
+                alert('Satuan Parameter kosong ..')
             } else {
                 $.ajax({
                     type: 'POST',
-                    url: '<?= base_url('station-add') ?>',
+                    url: '<?= base_url('param-add') ?>',
                     data: {
-                        'add_station': true,
-                        'user_id': user_id,
+                        'add_param': true,
                         'station_id': station_id,
+                        'list_param_id': list_param_id,
+                        'unit_id': unit_id,
                     },
                     dataType: 'json',
                     success: function(result) {
                         if (result.success == true) {
-                            $('#list-station').load('<?= base_url('station-list/' . $user->id) ?>', function() {
+                            $('#list-aqm-param').load('<?= base_url('param-list/' . $station->station_id) ?>', function() {
                                 $('#station_id').val('')
                             })
                         } else {
@@ -105,21 +125,21 @@
             $('#deleteid').val($(this).data('deleteid'));
         })
 
-        $("#remove_station").click(function() {
+        $("#remove_param").click(function() {
             var deleteid = $('#deleteid').val()
             $.ajax({
                 type: 'POST',
-                url: '<?= base_url('/station-remove') ?>',
+                url: '<?= base_url('/param-remove') ?>',
                 data: {
-                    'remove_station': true,
+                    'remove_param': true,
                     'deleteid': deleteid
                 },
                 dataType: 'json',
                 success: function(result) {
                     if (result.success == true) {
-                        $('#list-station').load('<?= base_url('station-list/' . $user->id) ?>', function() {})
+                        $('#list-aqm-param').load('<?= base_url('param-list/' . $station->station_id) ?>', function() {})
                     } else {
-                        alert('gagal hapus user stasiun')
+                        alert('gagal hapus parameter')
                     }
                 }
             })

@@ -24,9 +24,9 @@
                 <thead>
                     <tr>
                         <th width="1">No</th>
-                        <th width="150" nowrap></th>
+                        <th width="350" nowrap></th>
                         <th width="100">ID Stasiun</th>
-                        <th width="300">Nama&nbsp;Stasiun</th>
+                        <th width="200">Nama&nbsp;Stasiun</th>
                         <th width="100">Kota</th>
                         <th width="300">Provinsi</th>
                         <th width="100">Alamat</th>
@@ -34,7 +34,7 @@
                         <th width="100">Longitude</th>
                         <th width="100">Operator</th>
                         <th width="100">ISPU</th>
-                        <th width="200">Dibuat&nbsp;Oleh</th>
+                        <th width="100">Dibuat&nbsp;Oleh</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +43,7 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td>
+                                <a href="<?= base_url('aqm-station/aqm-param/edit/' . $list->station_id) ?>" class="btn btn-success btn-sm mx-1"><i class="fas fa-indent"></i></a>
                                 <a href="<?= base_url('aqm-station/edit/' . $list->id) ?>" class="btn btn-primary btn-sm mx-1"><i class="fas fa-edit"></i></a>
                                 <a id="getdeleteid" data-deleteid="<?= $list->id ?>" class="btn btn-danger btn-sm mx-1" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash"></i></a>
                             </td>
