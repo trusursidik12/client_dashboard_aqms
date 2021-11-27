@@ -162,6 +162,30 @@ class AddParamList extends Seeder
                     'created_by'            => 'admin@trusur.com',
                     'created_ip'            => '127.0.0.1'
                 ],
+                [
+                    'param'                 => 'sampler_operator_name',
+                    'name'                  => 'Operator Name',
+                    'description'           => 'Portable',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'param'                 => 'address',
+                    'name'                  => 'Alamat Sampling',
+                    'description'           => 'Portable',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'param'                 => 'lat_lon',
+                    'name'                  => 'Latitude Longitude',
+                    'description'           => 'Portable',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
             ];
         $this->db->table('aqm_param_lists')->insertBatch($data);
     }

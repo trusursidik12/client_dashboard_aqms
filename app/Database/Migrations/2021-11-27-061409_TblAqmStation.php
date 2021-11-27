@@ -18,6 +18,7 @@ class TblAqmStation extends Migration
             'lat'                       => ['type' => 'VARCHAR', 'constraint' => '30', 'null' => false],
             'lon'                       => ['type' => 'VARCHAR', 'constraint' => '30', 'null' => false],
             'operator'                  => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => false],
+            'is_ispu'                   => ['type' => 'SMALLINT', 'default' => '0', 'null' => true],
             'created_at'                => ['type' => 'DATETIME'],
             'created_by'                => ['type' => 'VARCHAR', 'constraint' => '50'],
             'created_ip'                => ['type' => 'VARCHAR', 'constraint' => '16'],
