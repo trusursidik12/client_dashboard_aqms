@@ -37,6 +37,11 @@ class BaseController extends Controller
      */
     protected $helpers = [];
 
+    public function __construct()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+    }
+
     /**
      * Constructor.
      */
@@ -48,5 +53,53 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+    }
+
+    // login check
+    public function loginCheck()
+    {
+        if (empty(session('session_id'))) {
+            echo "<script>window.location='" . base_url('/login') . "'</script>";
+            exit();
+        }
+    }
+
+    // admin check
+    public function adminCheck()
+    {
+        if (session('session_level') == 1) {
+            echo "<script>window.location='" . base_url('/') . "'</script>";
+            exit();
+        }
+    }
+
+    // saved info
+    public function savedInfo()
+    {
+        $data['created_at']        = date('Y-m-d H:i:s');
+        $data['created_by']        = session('session_email');
+        $data['created_ip']        = $this->request->getIPAddress();
+
+        return $data;
+    }
+
+    // updated info
+    public function updatedInfo()
+    {
+        $data['updated_at']        = date('Y-m-d H:i:s');
+        $data['updated_by']        = session('session_email');
+        $data['updated_ip']        = $this->request->getIPAddress();
+
+        return $data;
+    }
+
+    // deleted info
+    public function deletedInfo()
+    {
+        $data['deleted_at']        = date('Y-m-d H:i:s');
+        $data['deleted_by']        = session('session_email');
+        $data['deleted_ip']        = $this->request->getIPAddress();
+
+        return $data;
     }
 }
