@@ -67,7 +67,7 @@ class BaseController extends Controller
     // admin check
     public function adminCheck()
     {
-        if (session('session_level') == 1) {
+        if (session('session_level') != 1) {
             echo "<script>window.location='" . base_url('/') . "'</script>";
             exit();
         }

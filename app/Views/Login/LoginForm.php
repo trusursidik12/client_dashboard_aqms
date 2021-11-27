@@ -2,14 +2,18 @@
 <html lang="en">
 
 <head>
-    <?= $this->include('Admin/Templates/Header') ?>
+    <?= $this->include('Templates/Header') ?>
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- logo -->
         <div class="login-logo mb-4">
-            <img src="<?= base_url('assets/dist/img/logo.png') ?>" alt="SMAIT ASY-SYUKRIYYAH" width="50%">
+            <?php if (empty($logo)) : ?>
+                <img src="<?= base_url('assets/dist/img/trusur.png') ?>" alt="PT. Trusur Unggul Teknusa" width="50%">
+            <?php else : ?>
+                <img src="<?= base_url('assets/dist/img/' . $logo->logo) ?>" alt="<?= $logo->name ?>" width="50%">
+            <?php endif ?>
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -20,7 +24,7 @@
                 <?php endif ?>
                 <p class="login-box-msg">Login untuk memulai sesi Anda</p>
 
-                <form action="<?= base_url('login-session') ?>" method="post">
+                <form action="<?= base_url('session-in') ?>" method="POST">
                     <?= csrf_field() ?>
                     <div class="input-group">
                         <input type="email" name="email" class="form-control <?= $validation->hasError('email') ? 'is-invalid' : '' ?>" placeholder="Email">
@@ -49,9 +53,9 @@
                             <?= $validation->getError('password') ?>
                         </div>
                     </div>
-                    <?php if (session()->getFlashdata('notmatch')) : ?>
+                    <?php if (session()->getFlashdata('didntmatch')) : ?>
                         <small class="text-danger">
-                            <?= session()->getFlashdata('notmatch') ?>
+                            <?= session()->getFlashdata('didntmatch') ?>
                         </small>
                     <?php endif ?>
                     <div class="row mt-3">
@@ -64,13 +68,12 @@
                 </form>
 
                 <p class="mb-1">
-                    <a href="<?= base_url('lupa-password') ?>">Lupa Password</a>
                 </p>
             </div>
         </div>
     </div>
 
-    <?= $this->include('Admin/Templates/Js') ?>
+    <?= $this->include('Templates/Js') ?>
 
 </body>
 

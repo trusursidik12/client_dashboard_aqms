@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <?= $this->include('Admin/Templates/Header') ?>
+    <?= $this->include('Templates/Header') ?>
     <?= $this->renderSection('sectionheader') ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
-        <?= $this->include('Admin/Templates/Navbar') ?>
+        <?= $this->include('Templates/Navbar') ?>
         <?= $this->renderSection('sectionnavbar') ?>
 
         <!-- Main Sidebar Container -->
@@ -35,7 +35,7 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <?= $this->include('Admin/Templates/Sidebar') ?>
+                        <?= $this->include('Templates/Sidebar') ?>
                         <?= $this->renderSection('sectionsidebar') ?>
                     </ul>
                 </nav>
@@ -81,13 +81,13 @@
         </aside>
         <!-- /.control-sidebar -->
 
-        <?= $this->include('Admin/Templates/Footer') ?>
+        <?= $this->include('Templates/Footer') ?>
         <?= $this->renderSection('sectionfooter') ?>
 
     </div>
     <!-- ./wrapper -->
 
-    <?= $this->include('Admin/Templates/Js') ?>
+    <?= $this->include('Templates/Js') ?>
     <?= $this->renderSection('sectionjs') ?>
 </body>
 

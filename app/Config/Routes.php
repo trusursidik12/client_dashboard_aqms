@@ -33,6 +33,61 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
+// login
+$routes->get('/login', 'Login\Login::loginForm');
+$routes->add('/session-in', 'Login\Login::loginProcess');
+$routes->add('/session-out', 'Login\Login::logOut');
+
+// user
+$routes->get('/user', 'Admin\User::index');
+$routes->get('/user/create', 'Admin\User::create');
+$routes->post('/user-save', 'Admin\User::save');
+$routes->get('/user/edit/(:any)', 'Admin\User::edit/$1');
+$routes->post('/user-update', 'Admin\User::update');
+$routes->post('/user-delete', 'Admin\User::delete');
+
+// user station
+$routes->get('/user/station/(:any)', 'Admin\UserStation::edit/$1');
+$routes->post('/station-add', 'Admin\UserStation::add');
+$routes->get('/station-list', 'Admin\UserStation::list');
+$routes->post('/station-remove', 'Admin\UserStation::remove');
+
+// aqm param
+$routes->get('/aqm-param', 'AqmParam::index');
+$routes->get('/aqm-param/create', 'AqmParam::create');
+$routes->post('/aqm-param-save', 'AqmParam::save');
+$routes->get('/aqm-param/edit/(:any)', 'AqmParam::edit/$1');
+$routes->get('/param-list', 'AqmParam::list');
+$routes->post('/param-add', 'AqmParam::add');
+$routes->post('/param-remove', 'AqmParam::remove');
+$routes->post('/aqm-param-delete', 'AqmParam::delete');
+
+// aqm station
+$routes->get('/aqm-station', 'AqmStation::index');
+$routes->get('/aqm-station/create', 'AqmStation::create');
+$routes->post('/aqm-station-save', 'AqmStation::save');
+$routes->get('/aqm-station/edit/(:any)', 'AqmStation::edit/$1');
+$routes->post('/aqm-station-update', 'AqmStation::update');
+$routes->post('/aqm-station-delete', 'AqmStation::delete');
+
+// company profile
+$routes->get('/company-profile', 'CompanyProfile::index');
+$routes->get('/company-profile/edit/(:any)', 'CompanyProfile::edit/$1');
+$routes->post('/company-profile-update', 'CompanyProfile::update');
+
+// aqm data
+$routes->get('/aqm-data/station/:(any)', 'AqmData::station/$1');
+$routes->add('ajax/aqm-data/station/:(any)', 'AqmData::ajaxStation/$1');
+
+// aqm ispu
+$routes->get('/aqm-ispu/station/:(any)', 'AqmIspu::station/$1');
+$routes->add('ajax/aqm-ispu/station/:(any)', 'AqmIspu::ajaxStation/$1');
+
+// change password
+$routes->get('/change-password', 'ChangePassword::index');
+$routes->post('change-password-update', 'ChangePassword::update');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
