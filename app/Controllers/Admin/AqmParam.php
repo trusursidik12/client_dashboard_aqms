@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class AqmStation extends BaseController
+class AqmParam extends BaseController
 {
     public function index()
     {

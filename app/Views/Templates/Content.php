@@ -16,19 +16,22 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url('/dashboard') ?>" class="brand-link">
-                <img src="<?= base_url('assets/dist/img/logo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SMAIT ASY-SYUKRIYYAH</span>
+                <?php if (empty(@getCompanyProfile()->name)) : ?>
+                    <img src="<?= base_url('assets/dist/img/trusur.png') ?>" alt="<?= @getCompanyProfile()->name ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <?php else : ?>
+                    <img src="<?= base_url('assets/dist/img/' . @getCompanyProfile()->logo) ?>" alt="<?= @getCompanyProfile()->name ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <?php endif ?>
+                <span class="brand-text font-weight-light"><?= @getCompanyProfile()->name ?></span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel pt-3 pb-3 d-flex">
                     <div class="image">
                         <img src="<?= base_url('assets/dist/img/akun.png') ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?= session()->get('session_nama') ?></a>
+                        <a href="#" class="d-block"><?= session('session_name') ?></a>
                     </div>
                 </div>
 

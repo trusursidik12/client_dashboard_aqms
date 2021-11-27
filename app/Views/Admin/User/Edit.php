@@ -71,8 +71,8 @@
             <div class="col-md-12">
                 <label class="form-label">Status *</label>
                 <select name="status_id" class="form-control <?= $validation->hasError('status_id') ? 'is-invalid' : '' ?>">
-                    <option value="Pria" <?= empty(old('status_id')) ? ($user->status_id == 1 ? 'selected' : '') : (old('status_id') == 1 ? 'selected' : '') ?>>Aktif</option>
-                    <option value="Wanita" <?= empty(old('status_id')) ? ($user->status_id == 2 ? 'selected' : '') : (old('status_id') == 2 ? 'selected' : '') ?>>Tidak Aktif</option>
+                    <option value="1" <?= empty(old('status_id')) ? ($user->status_id == 1 ? 'selected' : '') : (old('status_id') == 1 ? 'selected' : '') ?>>Aktif</option>
+                    <option value="2" <?= empty(old('status_id')) ? ($user->status_id == 2 ? 'selected' : '') : (old('status_id') == 2 ? 'selected' : '') ?>>Tidak Aktif</option>
                 </select>
                 <div class="invalid-feedback">
                     <?= $validation->getError('status_id') ?>

@@ -36,7 +36,7 @@ class User extends BaseController
 
         $data = $data + $this->reference();
 
-        echo view('User/List', $data);
+        echo view('Admin/User/List', $data);
     }
 
     // column
@@ -46,7 +46,7 @@ class User extends BaseController
         $data['nip']                    = $this->request->getPost('nip');
         $data['full_name']              = $this->request->getPost('full_name');
         $data['phone']                  = $this->request->getPost('phone');
-        $data['email']                  = $this->request->getPost('phone');
+        $data['email']                  = $this->request->getPost('email');
         $data['status_id']              = $this->request->getPost('status_id');
 
         return $data;
@@ -60,7 +60,7 @@ class User extends BaseController
 
         $data = $data + $this->reference();
 
-        echo view('User/Create', $data);
+        echo view('Admin/User/Create', $data);
     }
 
     // saved user
@@ -121,7 +121,7 @@ class User extends BaseController
 
         $data = $data + $this->reference();
 
-        echo view('User/Edit', $data);
+        echo view('Admin/User/Edit', $data);
     }
 
     // updated user
@@ -182,9 +182,9 @@ class User extends BaseController
     // delete user
     public function delete()
     {
-        $this->user->update($this->request->getPost('id'), ['is_deleted' => 1] + $this->deletedInfo());
+        $this->user->delete($this->request->getPost('id'));
 
-        session()->setFlashdata('message', 'User berhasil dihapus!');
+        session()->setFlashdata('message', 'User berhasil dihapus');
         return redirect()->to('/user');
     }
 }
