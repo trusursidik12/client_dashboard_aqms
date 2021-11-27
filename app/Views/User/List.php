@@ -16,7 +16,7 @@
     <div class="col-md-12">
         <div class="row my-2">
             <div class="col-sm my-1">
-                <a href="<?= base_url('user/create') ?>" class="btn btn-primary"><i class="fas fa-plus-circle mx-3"></i></a>
+                <a href="<?= base_url('user/create') ?>" class="btn btn-info"><i class="fas fa-plus-circle mx-3"></i></a>
             </div>
         </div>
         <div class="table-responsive">

@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <div class="row my-2">
             <div class="col">
-                <a href="<?= base_url('user') ?>" class="btn btn-primary"><i class="fas fa-arrow-circle-left mx-3"></i></a>
+                <a href="<?= base_url('user') ?>" class="btn btn-info"><i class="fas fa-arrow-circle-left mx-3"></i></a>
             </div>
         </div>
         <form class="row g-3" action="<?= base_url('user-save') ?>" method="POST">
