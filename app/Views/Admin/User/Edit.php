@@ -14,7 +14,7 @@
                 <input type="hidden" name="id" value="<?= $user->id ?>">
                 <label class="form-label">Level *</label>
                 <select name="level_id" class="form-control <?= $validation->hasError('level_id') ? 'is-invalid' : '' ?>">
-                    <option value="">-- Pilih Level --</option>
+                    <option value="">-- Pilih Level -- *</option>
                     <?php foreach ($level as $llist) : ?>
                         <option value="<?= $llist->id ?>" <?= empty(old('level_id')) ? ($llist->id == $user->level_id ? 'selected' : '') : (old('level_id') == $llist->id ? 'selected' : '') ?>><?= $llist->name ?></option>
                     <?php endforeach ?>

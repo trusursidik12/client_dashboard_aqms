@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <label class="form-label">Level * (<small class="text-danger">level admin bisa membuat, mengubah, dan menghapus user</small>)</label>
                 <select name="level_id" class="form-control <?= $validation->hasError('level_id') ? 'is-invalid' : '' ?>">
-                    <option value="">-- Pilih Level --</option>
+                    <option value="">-- Pilih Level -- *</option>
                     <?php foreach ($level as $llist) : ?>
                         <option value="<?= $llist->id ?>" <?= old('level_id') == $llist->id ? 'selected' : '' ?>><?= $llist->name ?></option>
                     <?php endforeach ?>

@@ -15,13 +15,6 @@ class TblUserStation extends Migration
             'created_at'                => ['type' => 'DATETIME'],
             'created_by'                => ['type' => 'VARCHAR', 'constraint' => '50'],
             'created_ip'                => ['type' => 'VARCHAR', 'constraint' => '16'],
-            'updated_at'                => ['type' => 'DATETIME', 'null' => true],
-            'updated_by'                => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
-            'updated_ip'                => ['type' => 'VARCHAR', 'constraint' => '16', 'null' => true],
-            'is_deleted'                => ['type' => 'SMALLINT', 'default' => 0, 'null' => false],
-            'deleted_at'                => ['type' => 'DATETIME', 'null' => true],
-            'deleted_by'                => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
-            'deleted_ip'                => ['type' => 'VARCHAR', 'constraint' => '16', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addKey('user_id');

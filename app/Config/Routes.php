@@ -49,8 +49,8 @@ $routes->post('/user-delete', 'Admin\User::delete');
 
 // user station
 $routes->get('/user/station/(:any)', 'Admin\UserStation::edit/$1');
-$routes->post('/station-add', 'Admin\UserStation::add');
-$routes->get('/station-list', 'Admin\UserStation::list');
+$routes->add('/station-add', 'Admin\UserStation::add');
+$routes->get('/station-list/(:any)', 'Admin\UserStation::list/$1');
 $routes->post('/station-remove', 'Admin\UserStation::remove');
 
 // aqm param
