@@ -127,7 +127,7 @@ class User extends BaseController
     // updated user
     public function update()
     {
-        $emailCheck = $this->user->where(['id !=' => $this->request->getPost('id'), 'email' => $this->request->getPost('email')])->first();
+        $emailCheck = $this->user->where(['id !=' => $this->request->getPost('id'), 'email' => $this->request->getPost('email'), 'is_deleted' => 0])->first();
         if (!$this->validate(
             [
                 'level_id' => [
@@ -182,9 +182,9 @@ class User extends BaseController
     // delete user
     public function delete()
     {
-        $this->user->delete($this->request->getPost('id'));
+        $this->user->update($this->request->getPost('id'), ['is_deleted' => 1] + $this->deletedInfo());
 
-        session()->setFlashdata('message', 'User berhasil dihapus');
+        session()->setFlashdata('message', 'User berhasil dihapus!');
         return redirect()->to('/user');
     }
 }
