@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <div class="row my-2">
             <div class="col">
-                <a href="<?= base_url('user') ?>" class="btn btn-info"><i class="fas fa-arrow-circle-left mx-3"></i></a>
+                <a href="<?= base_url('aqm-station') ?>" class="btn btn-info"><i class="fas fa-arrow-circle-left mx-3"></i></a>
             </div>
         </div>
         <div class="row">
@@ -27,14 +27,14 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">Satuan *</label>
-                <select id="list_param_id" class="form-control <?= $validation->hasError('list_param_id') ? 'is-invalid' : '' ?>">
+                <select id="unit_id" class="form-control <?= $validation->hasError('unit_id') ? 'is-invalid' : '' ?>">
                     <option value="">-- Pilih Satuan -- *</option>
                     <?php foreach ($units as $unit) : ?>
                         <option value="<?= $unit->id ?>"><?= $unit->name ?></option>
                     <?php endforeach ?>
                 </select>
                 <div class="invalid-feedback">
-                    <?= $validation->getError('list_param_id') ?>
+                    <?= $validation->getError('unit_id') ?>
                 </div>
             </div>
             <div class="col-md-2 mt-3">
@@ -95,7 +95,7 @@
             var unit_id = $('#unit_id').val()
             if (list_param_id == '') {
                 alert('Parameter kosong ..')
-            } else if (unit_id) {
+            } else if (unit_id == '') {
                 alert('Satuan Parameter kosong ..')
             } else {
                 $.ajax({
@@ -111,7 +111,7 @@
                     success: function(result) {
                         if (result.success == true) {
                             $('#list-aqm-param').load('<?= base_url('param-list/' . $station->station_id) ?>', function() {
-                                $('#station_id').val('')
+                                $('#list_param_id').val('')
                             })
                         } else {
                             alert('ID Stasiun sudah ada ..')

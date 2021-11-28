@@ -63,7 +63,7 @@ $routes->post('/aqm-station-delete', 'Admin\AqmStation::delete');
 
 // aqm param
 $routes->get('aqm-station/aqm-param/edit/(:any)', 'Admin\AqmParam::edit/$1');
-$routes->post('/param-add', 'Admin\AqmParam::add');
+$routes->add('/param-add', 'Admin\AqmParam::add');
 $routes->get('/param-list/(:any)', 'Admin\AqmParam::list/$1');
 $routes->post('/param-remove', 'Admin\AqmParam::remove');
 

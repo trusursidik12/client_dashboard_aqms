@@ -56,7 +56,7 @@ class AqmParam extends BaseController
     // add station
     public function add()
     {
-        $paramListID = $this->paramList->where('id', $this->request->getPost('param_id'))->first()->param;
+        $paramListID = $this->paramList->where('id', $this->request->getPost('list_param_id'))->first()->param;
         $paramCheck = $this->param->where(['station_id' => $this->request->getPost('station_id'), 'param' => $paramListID])->first();
 
         if (empty($paramCheck)) {
@@ -64,7 +64,6 @@ class AqmParam extends BaseController
             $fields = $this->column() + $this->savedInfo();
 
             if (isset($_POST['add_param'])) {
-
                 if ($this->param->save($fields)) {
                     $params = array("success" => true);
                 } else {

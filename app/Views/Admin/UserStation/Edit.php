@@ -9,7 +9,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-5">
+                <label class="form-label">User *</label>
+                <input type="text" class="form-control" value="<?= $user->full_name ?>" readonly>
+            </div>
+            <div class="col-md-5">
                 <input type="hidden" id="user_id" value="<?= $user->id ?>">
                 <label class="form-label">Stasiun *</label>
                 <select id="station_id" class="form-control <?= $validation->hasError('station_id') ? 'is-invalid' : '' ?>">

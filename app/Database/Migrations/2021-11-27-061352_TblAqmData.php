@@ -11,7 +11,7 @@ class TblAqmData extends Migration
         $this->forge->addField([
             'id'                        => ['type' => 'BIGINT', 'unsigned' => true, 'auto_increment' => true],
             'station_id'                => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => false],
-            'date_time'                 => ['type' => 'DATE', 'null' => false],
+            'date_time'                 => ['type' => 'DATETIME', 'null' => false],
             'pm10'                      => ['type' => 'DOUBLE', 'null' => true],
             'pm25'                      => ['type' => 'DOUBLE', 'null' => true],
             'so2'                       => ['type' => 'DOUBLE', 'null' => true],
@@ -34,16 +34,7 @@ class TblAqmData extends Migration
             'sampler_operator_name'     => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
             'address'                   => ['type' => 'VARCHAR', 'constraint' => '200', 'null' => true],
             'lat_lon'                   => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
-            'created_at'                => ['type' => 'DATETIME'],
-            'created_by'                => ['type' => 'VARCHAR', 'constraint' => '50'],
-            'created_ip'                => ['type' => 'VARCHAR', 'constraint' => '16'],
-            'updated_at'                => ['type' => 'DATETIME', 'null' => true],
-            'updated_by'                => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
-            'updated_ip'                => ['type' => 'VARCHAR', 'constraint' => '16', 'null' => true],
-            'is_deleted'                => ['type' => 'SMALLINT', 'default' => 0, 'null' => false],
-            'deleted_at'                => ['type' => 'DATETIME', 'null' => true],
-            'deleted_by'                => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
-            'deleted_ip'                => ['type' => 'VARCHAR', 'constraint' => '16', 'null' => true],
+            'created_at'                => ['type' => 'TIMESTAMP'],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addKey('station_id');
