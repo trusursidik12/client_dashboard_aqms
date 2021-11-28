@@ -73,12 +73,12 @@ $routes->get('/company-profile/edit/(:any)', 'CompanyProfile::edit/$1');
 $routes->post('/company-profile-update', 'CompanyProfile::update');
 
 // aqm data
-$routes->get('/aqm-data/station/:(any)', 'AqmData::station/$1');
-$routes->add('ajax/aqm-data/station/:(any)', 'AqmData::ajaxStation/$1');
+$routes->get('/aqm-data/station/(:any)', 'AqmData::listData/$1');
+$routes->add('ajax/aqm-data/station/(:any)', 'AqmData::ajaxAqmData/$1');
 
 // aqm ispu
-$routes->get('/aqm-ispu/station/:(any)', 'AqmIspu::station/$1');
-$routes->add('ajax/aqm-ispu/station/:(any)', 'AqmIspu::ajaxStation/$1');
+$routes->get('/aqm-ispu/station/(:any)', 'AqmIspu::listIspu/$1');
+$routes->add('ajax/aqm-ispu/station/(:any)', 'AqmIspu::ajaxAqmIspu/$1');
 
 // change password
 $routes->get('/change-password', 'ChangePassword::index');

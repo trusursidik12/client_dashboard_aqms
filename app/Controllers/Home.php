@@ -19,11 +19,11 @@ class Home extends BaseController
     public function index()
     {
         $data['title']          = 'Aqms Dasbhaord';
-        $userStations       = $this->userStation->where(['user_id' => session('session_id')])->findAll();
+        $userStations           = $this->userStation->where(['user_id' => session('session_id')])->findAll();
         foreach ($userStations as $uStation) {
-            $uStations[] = $uStation->station_id;
+            $uStations[]        = $uStation->station_id;
         }
-        $aqmStations        = $this->aqmStation
+        $aqmStations            = $this->aqmStation
             ->where(['is_deleted' => 0])
             ->whereIn('station_id', @$uStations)
             ->findAll();
@@ -31,7 +31,7 @@ class Home extends BaseController
             ->where(['is_deleted' => 0])
             ->whereIn('station_id', @$uStations)
             ->countAllResults();
-        $aqmStation         = [];
+        $aqmStation             = [];
         foreach ($aqmStations as $key => $aqmStat) {
             $aqmStation[$key]['station_id']     = $aqmStat->station_id;
             $aqmStation[$key]['city']           = $aqmStat->city;

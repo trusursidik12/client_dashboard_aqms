@@ -17,7 +17,7 @@ class ChangePassword extends BaseController
         $this->user = new MUser();
     }
 
-    // list user
+    // form change password
     public function index()
     {
         $data['title']          = 'Ubah Password';
@@ -27,7 +27,7 @@ class ChangePassword extends BaseController
         echo view('User/ChangePassword', $data);
     }
 
-    // updated user
+    // updated password
     public function update()
     {
         if (!$this->validate(
