@@ -66,7 +66,7 @@
     <a href="<?= base_url('change-password') ?>" class="nav-link <?= uri_string() == 'change-password' ? 'active' : '' ?>">
         <i class="nav-icon fas fa-user-cog"></i>
         <p>
-            Edit Password
+            Ubah Password
         </p>
     </a>
 </li>

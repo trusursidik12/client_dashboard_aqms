@@ -23,7 +23,7 @@
 
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('logout') ?>" class="dropdown-item">
+                        <a href="<?= base_url('session-out') ?>" class="dropdown-item">
                             <i class="fas fa-sign-out-alt mr-2"></i> LogOut
                         </a>
                     </div>
