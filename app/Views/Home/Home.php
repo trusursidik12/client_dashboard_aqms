@@ -1,4 +1,4 @@
-<?= $this->extend('Clients/Templates/Content') ?>
+<?= $this->extend('Templates/Content') ?>
 
 <?= $this->section('sectionheader') ?>
 <!-- leaflet css -->
@@ -9,13 +9,12 @@
 <div class="row">
     <?php foreach ($aqmStations as $station) : ?>
         <div class="<?= $countAqmStation <= 2 ? 'col-md-6' : 'col-md-4' ?>">
-            <a href="<?= base_url('aqm-data/stasiun/' . $station['id_stasiun']) ?>">
+            <a href="<?= base_url('aqm-data/station/' . $station['station_id']) ?>">
                 <div class="info-box mb-3 <?= @$station['status'] == 'red' ? 'bg-danger' : 'bg-success' ?>">
-                    <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-broadcast-tower"></i></span> -->
                     <span class="info-box-icon bg-info elevation-1"><img src="<?= base_url('assets/dist/img/station.png') ?>" alt="aqms station"></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"><?= $station['id_stasiun'] . ' | ' . $station['kota'] ?></span>
+                        <span class="info-box-text"><?= $station['station_id'] . ' | ' . $station['city'] ?></span>
                         <span class="info-box-number"><?= @$station['last_data'] ?></span>
                     </div>
                 </div>
@@ -75,8 +74,11 @@
 
     <?php foreach ($listaqmStations as $location) : ?>
         L.marker([<?= $location->lat ?>, <?= $location->lon ?>]).addTo(map)
-            .bindPopup('<?= 'Nama Stasiun :' . $location->nama . '<br> Alamat :' . $location->alamat . '<br> Kota :' . $location->kota . '<br> Provinsi :' . $location->provinsi ?>')
-            .openPopup();
+            .bindPopup('<?= 'Nama Stasiun :' . $location->name .
+                            '<br> Alamat :' . $location->address .
+                            '<br> Kota :' . $location->city .
+                            '<br> Provinsi :' . $location->province .
+                            '<br> Operator / PIC : ' . $location->operator ?>').openPopup();
     <?php endforeach ?>
 </script>
 <?= $this->endSection() ?>
