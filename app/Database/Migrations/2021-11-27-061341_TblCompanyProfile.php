@@ -13,6 +13,8 @@ class TblCompanyProfile extends Migration
             'name'                      => ['type' => 'VARCHAR', 'constraint' => '150', 'null' => false],
             'description'               => ['type' => 'TEXT', 'null' => true],
             'logo'                      => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'username'                  => ['type' => 'VARCHAR', 'constraint' => '30', 'null' => false],
+            'password'                  => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => false],
             'created_at'                => ['type' => 'DATETIME'],
             'created_by'                => ['type' => 'VARCHAR', 'constraint' => '50'],
             'created_ip'                => ['type' => 'VARCHAR', 'constraint' => '16'],

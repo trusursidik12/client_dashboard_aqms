@@ -93,6 +93,9 @@ $routes->post('change-password-update', 'ChangePassword::update');
 // indoor
 $routes->get('/indoor', 'Indoor\Indoor::index');
 
+// outdoor
+$routes->post('/api/public/outdoor', 'Outdoor\Outdoor::station/$1', ['filter' => 'basicauth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
