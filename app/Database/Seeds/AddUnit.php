@@ -73,6 +73,41 @@ class AddUnit extends Seeder
                     'created_by'            => 'admin@trusur.com',
                     'created_ip'            => '127.0.0.1'
                 ],
+                [
+                    'name'                  => 'Mbar',
+                    'description'           => '-',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'name'                  => 'Celcius',
+                    'description'           => '-',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'name'                  => 'Km/jam',
+                    'description'           => '-',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'name'                  => 'Watt/m2',
+                    'description'           => '-',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
+                [
+                    'name'                  => 'mm/jam',
+                    'description'           => '-',
+                    'created_at'            => date('Y-m-d H:i:s'),
+                    'created_by'            => 'admin@trusur.com',
+                    'created_ip'            => '127.0.0.1'
+                ],
             ];
         $this->db->table('aqm_units')->insertBatch($data);
     }

@@ -84,6 +84,9 @@ $routes->add('ajax/aqm-ispu/station/(:any)', 'AqmIspu::ajaxAqmIspu/$1');
 $routes->get('/change-password', 'ChangePassword::index');
 $routes->post('change-password-update', 'ChangePassword::update');
 
+// indoor
+$routes->get('/indoor', 'Indoor\Indoor::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
