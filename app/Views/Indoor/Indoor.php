@@ -23,30 +23,8 @@
                                                 <h2 class=""><?= @$title . ' STASIUN ' . $lastData['station_id'] ?></h2>
                                                 <div class="row bg-white">
                                                     <div class="col-sm-12">
-                                                        <p style="font-size: 20px;"><b>ISPU <?= '(' . @$bantargerbangispu->waktu . ')' ?></b></p>
-                                                        <canvas id="<?= $lastData['station_id'] ?>" width="100" height="100"></canvas>
-                                                    </div>
-
-                                                    <div class="col-sm-6">
-                                                        <p style="font-size: 20px;"><b>DATA<?= '(' . @$bantargerbangdata->waktu . ')' ?></b></p>
-                                                        <canvas id="bantargerbangdata" width="100" height="100"></canvas>
-                                                        <table border="0" width="100%" style="margin-left: 22px; margin-top: -10px; font-size: 18px;">
-                                                            <tr>
-
-                                                                <td width="29" class="btn-secondary"><?= @$bantargerbangdata->pm10 ?></td>
-                                                                <td width="1"></td>
-                                                                <td width="29" class="btn-secondary"><?= @$bantargerbangdata->pm25 ?></td>
-                                                                <td width="1"></td>
-                                                                <td width="29" class="btn-secondary"><?= round(@$bantargerbangdata->so2 / 10) ?></td>
-                                                                <td width="1"></td>
-                                                                <td width="29" class="btn-secondary"><?= @$bantargerbangdata->co ?></td>
-                                                                <td width="1"></td>
-                                                                <td width="29" class="btn-secondary"><?= @$bantargerbangdata->o3 ?></td>
-                                                                <td width="1"></td>
-                                                                <td width="29" class="btn-secondary"><?= @$bantargerbangdata->no2 ?></td>
-                                                                <td width="15"></td>
-                                                            </tr>
-                                                        </table><br>
+                                                        <p style="font-size: 20px;"><b>ISPU <?= '(' . date('d-m-Y', strtotime(@$lastData['date_time_ispu'])) . ')' ?></b></p>
+                                                        <canvas id="<?= $lastData['station_id'] ?>" width="100" height="30"></canvas>
                                                     </div>
                                                 </div>
 
@@ -68,7 +46,7 @@
                                     </div>
                                 </div>
                             <?php endforeach ?>
-                            <div style="text-align:center">
+                            <div style="text-align:center; display: none;">
                                 <?php foreach ($theLastData as $lastData) : ?>
                                     <span class="dot"></span>
                                 <?php endforeach ?>
@@ -112,9 +90,9 @@
     <script>
         $(function() {
             const data = [
-                <?php foreach ($aqmParams as $param) : ?>
-                    <?php if ($param->station_id == $lastData['station_id']) : ?>
-                        <?= @$lastData['ispu'][$param->param] >= '350' ? '350' : @$lastData['ispu'][$param->param] ?>,
+                <?php foreach ($aqmParamIspu as $paramIspu) : ?>
+                    <?php if ($paramIspu->station_id == $lastData['station_id']) : ?>
+                        <?= @$lastData['ispu'][$paramIspu->param] >= '350' ? '350' : @$lastData['ispu'][$paramIspu->param] ?>,
                     <?php endif ?>
                 <?php endforeach ?>
             ];
@@ -123,8 +101,8 @@
             var color = Chart.helpers.color;
             var UserVsMyAppsData = {
                 labels: [
-                    <?php foreach ($aqmParams as $param) : ?>
-                        <?php if ($param->station_id == $lastData['station_id']) : ?> "<?= $param->name ?>",
+                    <?php foreach ($aqmParamIspu as $paramIspu) : ?>
+                        <?php if ($paramIspu->station_id == $lastData['station_id']) : ?> "<?= $paramIspu->name ?>",
                         <?php endif ?>
                     <?php endforeach ?>
                 ],

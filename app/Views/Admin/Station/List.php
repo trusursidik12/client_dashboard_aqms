@@ -34,7 +34,6 @@
                         <th width="100">Longitude</th>
                         <th width="100">Operator</th>
                         <th width="100">ISPU</th>
-                        <th width="100">Dibuat&nbsp;Oleh</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,9 +42,10 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td>
-                                <a href="<?= base_url('aqm-station/aqm-param/edit/' . $list->station_id) ?>" class="btn btn-success btn-sm mx-1"><i class="fas fa-indent"></i></a>
-                                <a href="<?= base_url('aqm-station/edit/' . $list->id) ?>" class="btn btn-primary btn-sm mx-1"><i class="fas fa-edit"></i></a>
-                                <a id="getdeleteid" data-deleteid="<?= $list->id ?>" class="btn btn-danger btn-sm mx-1" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash"></i></a>
+                                <a href="<?= base_url('aqm-station/aqm-param/edit/' . $list->station_id) ?>" class="btn btn-success btn-sm ">P Data</a>
+                                <a href="<?= base_url('aqm-station/aqm-param-ispu/edit/' . $list->station_id) ?>" class="btn btn-success btn-sm ">P Ispu</a>
+                                <a href="<?= base_url('aqm-station/edit/' . $list->id) ?>" class="btn btn-primary btn-sm "><i class="fas fa-edit"></i></a>
+                                <a id="getdeleteid" data-deleteid="<?= $list->id ?>" class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash"></i></a>
                             </td>
                             <td><?= $list->station_id ?></td>
                             <td><?= $list->name ?></td>
@@ -56,7 +56,6 @@
                             <td><?= $list->lon ?></td>
                             <td><?= $list->operator ?></td>
                             <td class="text-center"><?= $list->is_ispu == 1 ? '<span class="badge badge-success">ISPU</span>' : '<span class="badge badge-danger">Tidak Ada ISPU</span>' ?></td>
-                            <td><?= $list->created_by ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

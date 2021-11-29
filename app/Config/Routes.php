@@ -67,6 +67,12 @@ $routes->add('/param-add', 'Admin\AqmParam::add');
 $routes->get('/param-list/(:any)', 'Admin\AqmParam::list/$1');
 $routes->post('/param-remove', 'Admin\AqmParam::remove');
 
+// aqm param ispu
+$routes->get('aqm-station/aqm-param-ispu/edit/(:any)', 'Admin\AqmParamIspu::edit/$1');
+$routes->add('/param-ispu-add', 'Admin\AqmParamIspu::add');
+$routes->get('/param-ispu-list/(:any)', 'Admin\AqmParamIspu::list/$1');
+$routes->post('/param-ispu-remove', 'Admin\AqmParamIspu::remove');
+
 // company profile
 $routes->get('/company-profile', 'CompanyProfile::index');
 $routes->get('/company-profile/edit/(:any)', 'CompanyProfile::edit/$1');
