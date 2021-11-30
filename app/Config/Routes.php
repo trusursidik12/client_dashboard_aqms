@@ -94,7 +94,7 @@ $routes->post('change-password-update', 'ChangePassword::update');
 $routes->get('/indoor', 'Indoor\Indoor::index');
 
 // outdoor
-$routes->post('/api/public/outdoor', 'Outdoor\Outdoor::station/$1', ['filter' => 'basicauth']);
+$routes->get('/ispumapapi/api/aqmoutdoor', 'Outdoor\Outdoor::station');
 
 /*
  * --------------------------------------------------------------------
