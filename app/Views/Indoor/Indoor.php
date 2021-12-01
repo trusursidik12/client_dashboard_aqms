@@ -23,7 +23,7 @@
                                                 <h2 class=""><?= @$title . ' STASIUN ' . $lastData['station_id'] ?></h2>
                                                 <div class="row bg-white">
                                                     <div class="col-sm-12">
-                                                        <p style="font-size: 20px;"><b>ISPU <?= '(' . date('d-m-Y', strtotime(@$lastData['date_time_ispu'])) . ')' ?></b></p>
+                                                        <p style="font-size: 20px;"><b>ISPU <?= '(' . date('d-m-Y', strtotime(@$lastData['date_time_ispu'])) . ')' ?></b> | <b>KONSENTRASI <?= '(' . date('d-m-Y', strtotime(@$lastData['date_time'])) . ')' ?></b></p>
                                                         <canvas id="<?= $lastData['station_id'] ?>" width="100" height="30"></canvas>
                                                     </div>
                                                 </div>

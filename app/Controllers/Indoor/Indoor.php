@@ -49,7 +49,7 @@ class Indoor extends BaseController
                 $lastData[$key]['date_time']        = $rowDawa->date_time;
                 $lastData[$key]['data'][$param]     = $rowDawa->$param;
                 $lastData[$key]['ispu'][$param]     = @$this->aqmIspu->where('station_id', $rowDawa->station_id)->first()->$param;
-                $lastData[$key]['date_time_ispu']   = @$this->aqmIspu->where('station_id', $rowDawa->station_id)->first()->date_time;
+                $lastData[$key]['date_time_ispu']   = @$this->aqmIspu->where(['station_id' => $rowDawa->station_id])->orderBy('date_time', 'DESC')->first()->date_time;
             }
         }
         $data['theLastData']    = @$lastData;
