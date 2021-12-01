@@ -12,13 +12,9 @@
                         <th width="1">No</th>
                         <th>ID Stasiun</th>
                         <th>Waktu</th>
-                        <th>PM 10</th>
-                        <th>PM 2.5</th>
-                        <th>SO2</th>
-                        <th>CO</th>
-                        <th>O3</th>
-                        <th>NO2</th>
-                        <th>HC</th>
+                        <?php foreach ($listParams as $lParam) : ?>
+                            <th><?= $lParam->name ?></th>
+                        <?php endforeach ?>
                     </tr>
                 </thead>
             </table>
@@ -64,6 +60,20 @@
                 "url": "<?= base_url('ajax/aqm-ispu/station/' . $stationID) ?>",
                 "data": function(data) {}
             },
+            "columns": [{
+                    data: 'no'
+                },
+                {
+                    data: 'station_id'
+                },
+                {
+                    data: 'date_time'
+                },
+                <?php foreach ($listParams as $lParam) : ?> {
+                        data: '<?= $lParam->param ?>'
+                    },
+                <?php endforeach ?>
+            ],
             dom: "lBfrtip",
             buttons: [{
                     extend: 'copyHtml5',
