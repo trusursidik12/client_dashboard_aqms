@@ -46,22 +46,24 @@
         </ul>
     </li>
 <?php endif ?>
-<li class="nav-item">
-    <a href="<?= base_url('user') ?>" class="nav-link <?= uri_string() == 'user' || uri_string() == 'user/create' ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-users"></i>
-        <p>
-            User
-        </p>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="<?= base_url('aqm-station') ?>" class="nav-link <?= uri_string() == 'aqm-station' || uri_string() == 'aqm-station/create' ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-broadcast-tower"></i>
-        <p>
-            Aqm Stasiun
-        </p>
-    </a>
-</li>
+<?php if (session('session_id') == 1) : ?>
+    <li class="nav-item">
+        <a href="<?= base_url('user') ?>" class="nav-link <?= uri_string() == 'user' || uri_string() == 'user/create' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+                User
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="<?= base_url('aqm-station') ?>" class="nav-link <?= uri_string() == 'aqm-station' || uri_string() == 'aqm-station/create' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-broadcast-tower"></i>
+            <p>
+                Aqm Stasiun
+            </p>
+        </a>
+    </li>
+<?php endif ?>
 <li class="nav-item">
     <a href="<?= base_url('change-password') ?>" class="nav-link <?= uri_string() == 'change-password' ? 'active' : '' ?>">
         <i class="nav-icon fas fa-user-cog"></i>
