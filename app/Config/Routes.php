@@ -95,6 +95,7 @@ $routes->get('/indoor', 'Indoor\Indoor::index');
 
 // outdoor
 $routes->get('/ispumapapi/api/aqmoutdoor', 'Outdoor\Outdoor::station');
+$routes->post('/api/public/outdoor', 'Outdoor\OutdoorVtwo::station/$1', ['filter' => 'basicauth']);
 
 /*
  * --------------------------------------------------------------------
